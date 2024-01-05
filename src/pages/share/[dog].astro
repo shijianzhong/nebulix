@@ -1,0 +1,18 @@
+---
+export const getStaticPaths = () => {
+  return [
+    {
+      params: { dog: "clifford" },
+    },
+    {
+      params: { dog: "rover" },
+    },
+    {
+      params: { dog: "spot" },
+    }
+  ];
+};
+
+const {dog} =Astro.params;
+---
+<div>Good,{dog}</div>

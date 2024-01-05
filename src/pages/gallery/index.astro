@@ -1,0 +1,74 @@
+---
+// import BaseHead from '@/components/BaseHead.astro'
+// import Header from '@/components/Header.astro'
+// import Footer from '@/components/Footer.astro'
+// import Gallery from '@components/Gallery.astro'
+// import Gallery from "@components/Gallery.astro";
+import { getEntry } from "astro:content";
+import Gallery         from "@components/Gallery.astro"
+import ExternalScripts from "@components/ExternalScripts.astro"
+import Header from "@components/Header.astro";
+import '../../styles/main.css'
+// import Gallery from "@/components/Gallery.astro";
+// import ExternalScripts from '@/components/ExternalScripts.astro'
+let og = 'og-image.jpg'
+let title = 'Multiverse by HTML5 UP'
+let description =
+  'Say hello to Multiverse, a slick, one-page gallery design with a fully functional lightbox.'
+const _data = await getEntry("gallery", "pics");
+const images = _data.body
+
+// const about = await getEntry("config", "about");
+// const contact = await getEntry("config", "contact");
+---
+
+
+
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="index, follow" />
+    <meta
+      name="googlebot"
+      content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"
+    />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="shortcut icon" type="image/png" href="./favicon.svg" />
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(og, Astro.url)} />
+    <meta name="twitter:url" content={Astro.url} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(og, Astro.url)} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body class="is-preload">
+    <header id="header">
+      <h1>{title}</h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="/" class="icon solid fa-info-circle">首页</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <!-- {
+      images.map(x=>(
+        <img src={x.url} alt="">
+        <div>{x.name}</div>
+      ))
+    } -->
+    <Gallery images={images} title={title} description={description} />
+    <ExternalScripts>
+  </body>
+</html>
