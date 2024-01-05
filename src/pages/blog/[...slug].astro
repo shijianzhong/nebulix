@@ -10,6 +10,7 @@ import PageLayoutWide from "@layouts/PageLayoutWide.astro";
 import PdfView from "@components/common/PdfView.vue";
 import { t } from "@util/translate";
 
+
 export async function getStaticPaths() {
   const posts = (await getCollection("blog")).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -67,6 +68,9 @@ const filter = post.data?.tag
       type: "tag",
     }
   : null;
+
+  const pdfurl = "/src/assets/pdf/jianying.pdf"
+
 ---
 
 {
@@ -95,7 +99,7 @@ const filter = post.data?.tag
       <div class="richtext pb-8">
         <Content />
         {
-          hasPDF && <PdfView/>
+          hasPDF && <PdfView pdfUrl={pdfurl} />
         }
       </div>
       <ItemNav nav={post.data.nav} {base_url} slot="nav" />

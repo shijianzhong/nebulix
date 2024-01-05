@@ -11,8 +11,11 @@
 </template>
   
 <script setup>
-import {ref} from "vue"
-const pdfUrl = ref("../jianying.pdf")
+
+// const pdfUrl = ref("../jianying.pdf")
+const props = defineProps({
+pdfUrl: String
+});
 
 
 </script>
@@ -22,7 +25,7 @@ const pdfUrl = ref("../jianying.pdf")
   height: 1000px;
 }
 iframe{
-    width: 100%;
-    height: 100%;
+    height:100%;
 }
+
 </style>
