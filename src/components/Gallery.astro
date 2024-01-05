@@ -2,23 +2,23 @@
 import { Image } from 'astro:assets'
 import { glob } from 'glob'
 
-async function ImageFetcher(pattern: string) {
-  const files = glob.sync(pattern, { posix: true })
-  const imagePromises = files.map(async (file) => {
-    const src = file.replace('public', '')
-    return { src }
-  })
+// async function ImageFetcher(pattern: string) {
+//   const files = glob.sync(pattern, { posix: true })
+//   const imagePromises = files.map(async (file) => {
+//     const src = file.replace('public', '')
+//     return { src }
+//   })
 
-  const imageFiles = await Promise.all(imagePromises)
+//   const imageFiles = await Promise.all(imagePromises)
 
-  imageFiles.sort((a, b) => a.src.localeCompare(b.src))
+//   imageFiles.sort((a, b) => a.src.localeCompare(b.src))
 
-  return imageFiles
-}
+//   return imageFiles
+// }
 
-const imageFiles = await ImageFetcher('public/images/*.{jpg,,jpeg,png,webp}')
+// const imageFiles = await ImageFetcher('public/images/*.{jpg,,jpeg,png,webp}')
 
-const { images, title, description } = Astro.props
+const { images, description } = Astro.props
 let _a = images.split(',')
 const imgObjs = _a.map(x=>{
   let _tmp = x.split('|')
@@ -28,7 +28,6 @@ const imgObjs = _a.map(x=>{
   }
 })
 
-console.log(imgObjs)
 ---
 
 <div id="main">
