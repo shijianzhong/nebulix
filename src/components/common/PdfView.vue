@@ -1,12 +1,12 @@
 <template>
    <div class="pdf_container">
-      <iframe
+      <!-- <iframe
         :src="`pdf/web/viewer.html?file=${pdfUrl}`"
         class="pdf-window"
         width="100%"
         height="100%"
         frameborder="0"
-      ></iframe>
+      ></iframe> -->
     </div>
 </template>
   
