@@ -1,22 +1,17 @@
 ---
 import { getEntry } from "astro:content";
-import Gallery         from "@components/Gallery.astro"
-import ExternalScripts from "@components/ExternalScripts.astro"
-import '../../styles/main.css'
-let og = 'og-image.jpg'
-let title = '欣赏美图，也是养生'
-let description =
-  '欣赏美图，也是养生，每天一张，分享给更多朋友。'
+import Gallery from "@components/Gallery.astro";
+import ExternalScripts from "@components/ExternalScripts.astro";
+import "../../styles/main.css";
+let og = "og-image.jpg";
+let title = "欣赏美图，也是养生";
+let description = "欣赏美图，也是养生，每天一张，分享给更多朋友。";
 const _data = await getEntry("gallery", "pics");
-const images = _data.body
-
+const images = _data.body;
 ---
-
-
 
 <!doctype html>
 <html lang="en">
-
   <head>
     <meta charset="utf-8" />
     <meta name="robots" content="index, follow" />
@@ -40,8 +35,22 @@ const images = _data.body
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL(og, Astro.url)} />
     <meta name="twitter:card" content="summary_large_image" />
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8317527679530231"
-     crossorigin="anonymous"></script>
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8317527679530231"
+      crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2HYXK51D0M"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-2HYXK51D0M");
+    </script>
   </head>
   <body class="is-preload">
     <header id="header">
@@ -55,6 +64,6 @@ const images = _data.body
       </nav>
     </header>
     <Gallery images={images} title={title} description={description} />
-    <ExternalScripts>
+    <ExternalScripts />
   </body>
 </html>
